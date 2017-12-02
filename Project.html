@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+.map {fill: #666; stroke: #f5f5f5;}
+.border_map {stroke: red; stroke-width: 3px;}
+.torino_map {fill: #fff; stroke: blue; stroke-width: 3px;}
+</style>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>TERREMOTI</title>
+		<link rel="stylesheet" type="text/css" href="style.css" >
+		<link rel="stylesheet" href="Slider/d3.slider.css" />
+		<script src="http://d3js.org/d3.v3.min.js"></script>
+		<script src="http://d3js.org/topojson.v1.min.js"></script>
+
+		<style>
+
+	    body {
+	      font-family: Verdana,Arial,sans-serif;
+	    }
+
+	    h2 {
+	      font-size: 1.2em;
+	      margin: 2px 0 10px 0;
+	    }
+
+	    .wrapper {
+	      width: 75%;
+	      margin-left: auto;
+	      margin-right: auto;
+	    }
+
+	    .wrapper > div {
+	      margin: 15px 0;
+	    }
+	  </style>
+	</head>
+
+	<body>
+		<script src="Slider/d3.slider.js"></script>
+		<script>	var minYear = 1800 ,maxYear = 2014, minMag = 6,maxMag = 8; </script>
+		<script type="text/javascript" src="italy.js"></script>
+		<div class="wrapper">
+			<h2>Showing years from <span id="slider3textmin">1800</span> to <span id="slider3textmax">2014</span></h2>
+	    <div id="slider3"></div>
+			<br>
+			<h2>Showing magnitude from <span id="sliderMtextmin">6</span> to <span id="sliderMtextmax">8</span></h2>
+	    <div id="sliderm"></div>
+		</div>
+
+
+  </body>
+
+</html>
