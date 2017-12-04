@@ -115,8 +115,8 @@ defs.append("svg:pattern")
 svg.append("rect")
         .attr("width", 300)
         .attr("height", 100)
-        .attr("x", 10)
-        .attr("y", 10)
+        .attr("x", 50)
+        .attr("y", 500)
         .style("fill", "#fff")
         .style("fill", "url(#legend)");
 
@@ -236,79 +236,77 @@ drawTerr();
       for (var i=0; i< values.length; i++){
 
         if(values[i][7] != undefined && values[i][8] != undefined && values[i][11] != undefined){
+        	if (values[i][0] >= minYear && values[i][0] <= maxYear && parseFloat(values[i][11].replace(",",".")) >= minMag && parseFloat(values[i][11].replace(",",".")) <= maxMag ){
+	          var c = {
+	            year: values[i][0],
+	            month: values[i][1],
+	            day: values[i][2],
+	            hour: values[i][3],
+	            min: values[i][4],
+	            sec: values[i][5],
+	            area: values[i][6],
+	            lat: parseFloat(values[i][7].replace(",",".")),
+	            long: parseFloat(values[i][8].replace(",",".")),
+	            dep: values[i][9],
+	            io: values[i][10],
+	            mw: parseFloat(values[i][11].replace(",",".")),
+	            erMw: values[i][12],
 
-          var c = {
-            year: values[i][0],
-            month: values[i][1],
-            day: values[i][2],
-            hour: values[i][3],
-            min: values[i][4],
-            sec: values[i][5],
-            area: values[i][6],
-            lat: parseFloat(values[i][7].replace(",",".")),
-            long: parseFloat(values[i][8].replace(",",".")),
-            dep: values[i][9],
-            io: values[i][10],
-            mw: parseFloat(values[i][11].replace(",",".")),
-            erMw: values[i][12],
+	            GetPos: function() {
+	              var pos = [this.long,this.lat];
+	              return pos;
+	            },
 
-            GetPos: function() {
-              var pos = [this.long,this.lat];
-              return pos;
-            },
+	            GetRadius: function(){
+	            	if(this.mw<3.75)
+	            		return 4;
+	            	if(this.mw<4.25)
+	            		return 5;
+	            	if(this.mw<4.75)
+	            		return 6;
+	            	if(this.mw<5.25)
+	            		return 7;
+	            	if(this.mw<5.75)
+	            		return 8;
+	            	if(this.mw<6.25)
+	            		return 9;
+	            	if(this.mw<6.75)
+	            		return 10;
+	            	if(this.mw>=6.75)
+	            		return 11;
 
-            GetRadius: function(){
-            	if(this.mw<3.75)
-            		return 4;
-            	if(this.mw<4)
-            		return 5;
-            	if(this.mw<4.5)
-            		return 6;
-            	if(this.mw<5)
-            		return 7;
-            	if(this.mw<5.5)
-            		return 8;
-            	if(this.mw<6)
-            		return 9;
-            	if(this.mw<6.5)
-            		return 10;
-            	if(this.mw<7)
-            		return 11;
+	            },
 
-            },
+	            GetFill: function(){
+	            	if(this.mw<3.75)
+	            		return "url(#circle_1)";
+	            	if(this.mw<4.25)
+	            		return "url(#circle_2)";
+	            	if(this.mw<4.75)
+	            		return "url(#circle_3)";
+	            	if(this.mw<5.25)
+	            		return "url(#circle_4)";
+	            	if(this.mw<5.75)
+	            		return "url(#circle_5)";
+	            	if(this.mw<6.25)
+	            		return "url(#circle_6)";
+	            	if(this.mw<6.75)
+	            		return "url(#circle_7)";
+	            	if(this.mw>=6.75)
+	            		return "url(#circle_8)";
+	            },
 
-            GetFill: function(){
-            	if(this.mw<3.75)
-            		return "url(#circle_1)";
-            	if(this.mw<4)
-            		return "url(#circle_2)";
-            	if(this.mw<4.5)
-            		return "url(#circle_3)";
-            	if(this.mw<5)
-            		return "url(#circle_4)";
-            	if(this.mw<5.5)
-            		return "url(#circle_5)";
-            	if(this.mw<6)
-            		return "url(#circle_6)";
-            	if(this.mw<6.5)
-            		return "url(#circle_7)";
-            	if(this.mw<7)
-            		return "url(#circle_8)";
-            },
+	            GetInfo: function () {
+	              return 'Year: '+this.year+' Month: '+this.month+' Day: '+this.day
+	                    +'\nHour: '+this.hour+' Minute: '+this.min+' Sec: '+this.sec
+	                    +'\nLocation: '+this.area+' Latitude: '+this.lat+' Longitude: '+this.long
+	                    +'\nDepth (Km): '+this.dep+' Epicentral intensity: '+this.io+' Magnitude: '+this.mw+'+-'+this.erMw;
+	            }
+	          }
 
-            GetInfo: function () {
-              return 'Year: '+this.year+' Month: '+this.month+' Day: '+this.day
-                    +'\nHour: '+this.hour+' Minute: '+this.min+' Sec: '+this.sec
-                    +'\nLocation: '+this.area+' Latitude: '+this.lat+' Longitude: '+this.long
-                    +'\nDepth (Km): '+this.dep+' Epicentral intensity: '+this.io+' Magnitude: '+this.mw+'+-'+this.erMw;
-            }
-          }
-
-
-          if (values[i][0] >= minYear && values[i][0] <= maxYear && parseFloat(values[i][11].replace(",",".")) >= minMag && parseFloat(values[i][11].replace(",",".")) <= maxMag ){
-            coordinates.push(c);
-          }
-      }
+              coordinates.push(c);
+        	}
+    	}
 
         if (values[i][0] > maxYear) break;
 
@@ -324,9 +322,6 @@ drawTerr();
       .attr("cx", function (d) { return projection(d.GetPos())[0]; })
       .attr("cy", function (d) { return projection(d.GetPos())[1]; })
       .attr("r", function (d) { return d.GetRadius(); })
-      //.attr("fill", "url(#circle_1)")
-      //.attr("fill", "red")
-      //.attr('xlink:href',"svg/Marker-5.svg")
       .style("fill", "#fff")
       .style("fill", function (d) { return d.GetFill();})
       .append("svg:title")
