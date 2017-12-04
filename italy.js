@@ -11,8 +11,8 @@ defs.append("svg:pattern")
     .attr("patternUnits", "objectBoundingBox")
     .append("svg:image")
     .attr("xlink:href", 'svg/Marker-1.svg')
-    .attr("width", 8)
-    .attr("height", 8)
+    .attr("width", 14)
+    .attr("height", 14)
     .attr("x", 0)
     .attr("y", 0);
 
@@ -23,8 +23,8 @@ defs.append("svg:pattern")
     .attr("patternUnits", "objectBoundingBox")
     .append("svg:image")
     .attr("xlink:href", 'svg/Marker-2.svg')
-    .attr("width", 10)
-    .attr("height", 10)
+    .attr("width", 16)
+    .attr("height", 16)
     .attr("x", 0)
     .attr("y", 0);
 
@@ -35,8 +35,8 @@ defs.append("svg:pattern")
     .attr("patternUnits","objectBoundingBox")
     .append("svg:image")
     .attr("xlink:href", 'svg/Marker-3.svg')
-    .attr("width", 12)
-    .attr("height", 12)
+    .attr("width", 18)
+    .attr("height", 18)
     .attr("x", 0)
     .attr("y", 0);
 
@@ -47,8 +47,8 @@ defs.append("svg:pattern")
     .attr("patternUnits", "objectBoundingBox")
     .append("svg:image")
     .attr("xlink:href", 'svg/Marker-4.svg')
-    .attr("width", 14)
-    .attr("height", 14)
+    .attr("width", 20)
+    .attr("height", 20)
     .attr("x", 0)
     .attr("y", 0);
 
@@ -59,8 +59,8 @@ defs.append("svg:pattern")
     .attr("patternUnits", "objectBoundingBox")
     .append("svg:image")
     .attr("xlink:href", 'svg/Marker-5.svg')
-    .attr("width", 16)
-    .attr("height", 16)
+    .attr("width", 22)
+    .attr("height", 22)
     .attr("x", 0)
     .attr("y", 0);
 
@@ -71,8 +71,8 @@ defs.append("svg:pattern")
     .attr("patternUnits", "objectBoundingBox")
     .append("svg:image")
     .attr("xlink:href", 'svg/Marker-6.svg')
-    .attr("width", 18)
-    .attr("height", 18)
+    .attr("width", 24)
+    .attr("height", 24)
     .attr("x", 0)
     .attr("y", 0);
 
@@ -83,8 +83,8 @@ defs.append("svg:pattern")
     .attr("patternUnits", "objectBoundingBox")
     .append("svg:image")
     .attr("xlink:href", 'svg/Marker-7.svg')
-    .attr("width", 20)
-    .attr("height", 20)
+    .attr("width", 26)
+    .attr("height", 26)
     .attr("x", 0)
     .attr("y", 0);
 
@@ -95,8 +95,8 @@ defs.append("svg:pattern")
     .attr("patternUnits", "objectBoundingBox")
     .append("svg:image")
     .attr("xlink:href", 'svg/Marker-8.svg')
-    .attr("width", 22)
-    .attr("height", 22)
+    .attr("width", 28)
+    .attr("height", 28)
     .attr("x", 0)
     .attr("y", 0);
 
@@ -207,7 +207,7 @@ drawTerr();
 
 // SLIDER YEARS __________________________________________________________________________________________________________
 
-  d3.select('#slider3').call(d3.slider().axis(d3.svg.axis().ticks(20)).min(1000).max(2014).step(1).value( [ 1800, 2014 ] ).on("slide", function(evt, value) {
+  d3.select('#slider3').call(d3.slider().axis(d3.svg.axis().ticks(20)).min(1000).max(2014).step(1).value( [ 1800, 2014 ] ).on("slideend", function(evt, value) {
     d3.select('#slider3textmin').text(value[ 0 ]);
     d3.select('#slider3textmax').text(value[ 1 ]);
     minYear = value[ 0 ];
@@ -219,7 +219,7 @@ drawTerr();
 
   // SLIDER MAGNITUDE __________________________________________________________________________________________________________
 
-    d3.select('#sliderm').call(d3.slider().axis(d3.svg.axis().ticks(13)).min(2).max(8).step(0.1).value( [ 6, 8 ] ).on("slide", function(evt, value) {
+    d3.select('#sliderm').call(d3.slider().axis(d3.svg.axis().ticks(13)).min(2).max(8).step(0.1).value( [ 6, 8 ] ).on("slideend", function(evt, value) {
       d3.select('#sliderMtextmin').text(value[ 0 ]);
       d3.select('#sliderMtextmax').text(value[ 1 ]);
       minMag = value[ 0 ];
@@ -259,21 +259,21 @@ drawTerr();
 
 	            GetRadius: function(){
 	            	if(this.mw<3.75)
-	            		return 4;
-	            	if(this.mw<4.25)
-	            		return 5;
-	            	if(this.mw<4.75)
-	            		return 6;
-	            	if(this.mw<5.25)
 	            		return 7;
-	            	if(this.mw<5.75)
+	            	if(this.mw<4.25)
 	            		return 8;
-	            	if(this.mw<6.25)
+	            	if(this.mw<4.75)
 	            		return 9;
-	            	if(this.mw<6.75)
+	            	if(this.mw<5.25)
 	            		return 10;
-	            	if(this.mw>=6.75)
+	            	if(this.mw<5.75)
 	            		return 11;
+	            	if(this.mw<6.25)
+	            		return 12;
+	            	if(this.mw<6.75)
+	            		return 13;
+	            	if(this.mw>=6.75)
+	            		return 14;
 
 	            },
 
