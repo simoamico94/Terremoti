@@ -2,21 +2,124 @@ var width = 1500,  height = 1100;
 
 var svg = d3.select("body").append("svg").attr("width", width).attr("height", height);
 
-/*var defs = svg.append('svg:defs');
+var defs = svg.append('svg:defs');
 
-var allpatterns = defs.selectAll("pattern")
-    .data(color.range())
-  .enter().append('svg:pattern')
-    .attr('id', function(d, i) { return "pattern-" + i; })
-    .attr('width', 16)
-    .attr('height', 16)
-    .attr('patternUnits', 'userSpaceOnUse'); 
+defs.append("svg:pattern")
+    .attr("id", "circle_1")
+    .attr("width", 40)
+    .attr("height", 40)
+    .attr("patternUnits", "objectBoundingBox")
+    .append("svg:image")
+    .attr("xlink:href", 'svg/Marker-1.svg')
+    .attr("width", 8)
+    .attr("height", 8)
+    .attr("x", 0)
+    .attr("y", 0);
 
-allpatterns
-  .append('svg:image')
-    .attr('width', 16)
-    .attr('height', 16)
-    .attr('xlink:href', 'circle_green.png');*/
+defs.append("svg:pattern")
+    .attr("id", "circle_2")
+    .attr("width", 40)
+    .attr("height", 40)
+    .attr("patternUnits", "objectBoundingBox")
+    .append("svg:image")
+    .attr("xlink:href", 'svg/Marker-2.svg')
+    .attr("width", 10)
+    .attr("height", 10)
+    .attr("x", 0)
+    .attr("y", 0);
+
+defs.append("svg:pattern")
+    .attr("id", "circle_3")
+    .attr("width", 40)
+    .attr("height", 40)
+    .attr("patternUnits","objectBoundingBox")
+    .append("svg:image")
+    .attr("xlink:href", 'svg/Marker-3.svg')
+    .attr("width", 12)
+    .attr("height", 12)
+    .attr("x", 0)
+    .attr("y", 0);
+
+defs.append("svg:pattern")
+    .attr("id", "circle_4")
+    .attr("width", 40)
+    .attr("height", 40)
+    .attr("patternUnits", "objectBoundingBox")
+    .append("svg:image")
+    .attr("xlink:href", 'svg/Marker-4.svg')
+    .attr("width", 14)
+    .attr("height", 14)
+    .attr("x", 0)
+    .attr("y", 0);
+
+defs.append("svg:pattern")
+    .attr("id", "circle_5")
+    .attr("width", 40)
+    .attr("height", 40)
+    .attr("patternUnits", "objectBoundingBox")
+    .append("svg:image")
+    .attr("xlink:href", 'svg/Marker-5.svg')
+    .attr("width", 16)
+    .attr("height", 16)
+    .attr("x", 0)
+    .attr("y", 0);
+
+defs.append("svg:pattern")
+    .attr("id", "circle_6")
+    .attr("width", 40)
+    .attr("height", 40)
+    .attr("patternUnits", "objectBoundingBox")
+    .append("svg:image")
+    .attr("xlink:href", 'svg/Marker-6.svg')
+    .attr("width", 18)
+    .attr("height", 18)
+    .attr("x", 0)
+    .attr("y", 0);
+
+defs.append("svg:pattern")
+    .attr("id", "circle_7")
+    .attr("width", 40)
+    .attr("height", 40)
+    .attr("patternUnits", "objectBoundingBox")
+    .append("svg:image")
+    .attr("xlink:href", 'svg/Marker-7.svg')
+    .attr("width", 20)
+    .attr("height", 20)
+    .attr("x", 0)
+    .attr("y", 0);
+
+defs.append("svg:pattern")
+    .attr("id", "circle_8")
+    .attr("width", 40)
+    .attr("height", 40)
+    .attr("patternUnits", "objectBoundingBox")
+    .append("svg:image")
+    .attr("xlink:href", 'svg/Marker-8.svg')
+    .attr("width", 22)
+    .attr("height", 22)
+    .attr("x", 0)
+    .attr("y", 0);
+
+defs.append("svg:pattern")
+    .attr("id", "legend")
+    .attr("width", 40)
+    .attr("height", 40)
+    .attr("patternUnits", "objectBoundingBox")
+    .append("svg:image")
+    .attr("xlink:href", 'svg/Legend.svg')
+    .attr("width", 300)
+    .attr("height", 100)
+    .attr("x", 0)
+    .attr("y", 0);
+
+svg.append("rect")
+        .attr("width", 300)
+        .attr("height", 100)
+        .attr("x", 10)
+        .attr("y", 10)
+        .style("fill", "#fff")
+        .style("fill", "url(#legend)");
+
 // read file ___________________________________________________________________________________________________________
 
 var csvText;
@@ -154,6 +257,45 @@ drawTerr();
               return pos;
             },
 
+            GetRadius: function(){
+            	if(this.mw<3.75)
+            		return 4;
+            	if(this.mw<4)
+            		return 5;
+            	if(this.mw<4.5)
+            		return 6;
+            	if(this.mw<5)
+            		return 7;
+            	if(this.mw<5.5)
+            		return 8;
+            	if(this.mw<6)
+            		return 9;
+            	if(this.mw<6.5)
+            		return 10;
+            	if(this.mw<7)
+            		return 11;
+
+            },
+
+            GetFill: function(){
+            	if(this.mw<3.75)
+            		return "url(#circle_1)";
+            	if(this.mw<4)
+            		return "url(#circle_2)";
+            	if(this.mw<4.5)
+            		return "url(#circle_3)";
+            	if(this.mw<5)
+            		return "url(#circle_4)";
+            	if(this.mw<5.5)
+            		return "url(#circle_5)";
+            	if(this.mw<6)
+            		return "url(#circle_6)";
+            	if(this.mw<6.5)
+            		return "url(#circle_7)";
+            	if(this.mw<7)
+            		return "url(#circle_8)";
+            },
+
             GetInfo: function () {
               return 'Year: '+this.year+' Month: '+this.month+' Day: '+this.day
                     +'\nHour: '+this.hour+' Minute: '+this.min+' Sec: '+this.sec
@@ -181,9 +323,12 @@ drawTerr();
       .append("circle")
       .attr("cx", function (d) { return projection(d.GetPos())[0]; })
       .attr("cy", function (d) { return projection(d.GetPos())[1]; })
-      .attr("r", "8px")
-      .attr("fill", "red")
-      .attr('xlink:href',"svg/Marker-5.svg")
+      .attr("r", function (d) { return d.GetRadius(); })
+      //.attr("fill", "url(#circle_1)")
+      //.attr("fill", "red")
+      //.attr('xlink:href',"svg/Marker-5.svg")
+      .style("fill", "#fff")
+      .style("fill", function (d) { return d.GetFill();})
       .append("svg:title")
       .text(function(d) {return d.GetInfo();});
 
