@@ -207,9 +207,11 @@ drawTerr();
 
 // SLIDER YEARS __________________________________________________________________________________________________________
 
-  d3.select('#slider3').call(d3.slider().axis(d3.svg.axis().ticks(20)).min(1000).max(2014).step(1).value( [ 1800, 2014 ] ).on("slideend", function(evt, value) {
+  d3.select('#slider3').call(d3.slider().axis(d3.svg.axis().ticks(20)).min(1000).max(2014).step(1).value( [ 1800, 2014 ] ).on("slide", function(evt, value) {
     d3.select('#slider3textmin').text(value[ 0 ]);
     d3.select('#slider3textmax').text(value[ 1 ]);
+  })
+  .on("slideend", function(evt, value) {
     minYear = value[ 0 ];
     maxYear = value[ 1 ];
     console.log(minYear,maxYear,minMag,maxMag);
@@ -219,9 +221,11 @@ drawTerr();
 
   // SLIDER MAGNITUDE __________________________________________________________________________________________________________
 
-    d3.select('#sliderm').call(d3.slider().axis(d3.svg.axis().ticks(13)).min(2).max(8).step(0.1).value( [ 6, 8 ] ).on("slideend", function(evt, value) {
+    d3.select('#sliderm').call(d3.slider().axis(d3.svg.axis().ticks(13)).min(2).max(8).step(0.1).value( [ 6, 8 ] ).on("slide", function(evt, value){
       d3.select('#sliderMtextmin').text(value[ 0 ]);
       d3.select('#sliderMtextmax').text(value[ 1 ]);
+    })
+    .on("slideend", function(evt, value) {
       minMag = value[ 0 ];
       maxMag = value[ 1 ];
       console.log(minYear,maxYear,minMag,maxMag);
